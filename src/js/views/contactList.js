@@ -52,7 +52,6 @@ export const ContactList = () => {
     store.contacts(newList)
 }
 
-
 const editContact = (id) => {
   const newContact = {
     full_name: name,
@@ -81,16 +80,12 @@ const handleKeyPress = (e) => {
   return (
     <>
       <nav className="navbar bg-body-tertiary d-flex justify-content-center">
-        <div className="container d-flex justify-content-bewtween m-0 ">
-          <Link to={"/add"}>
-            <button type="button" className="btn btn-success">
-              Add New Contact
-            </button>
-          </Link>
-          {/* <!-- Button trigger modal --> */}
+        <div className="container d-flex justify-content-between row">
+          {/* <!-- Call all Agendas possible --> */}
+          <div className="column col-6">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary m-3"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
             onClick={actions.getAllAgendas}
@@ -104,6 +99,8 @@ const handleKeyPress = (e) => {
             ))}
             {store.agenda}
           </button>
+
+  {/* <!-- Agenda selected --> */}
           <button
             type="button"
             className="btn btn-primary"
@@ -113,7 +110,16 @@ const handleKeyPress = (e) => {
           >
             Agenda seleccionada: {store.agenda}
           </button>
-          {/* <!-- Modal --> */}
+          </div>
+          <div className="column col-6">
+
+  {/* <!-- Add Contact --> */}
+          <Link to={"/add"}>
+            <button type="button" className="btn btn-success">
+              Add New Contact
+            </button>
+          </Link>
+          </div>
           <div
             className="modal fade"
             id="exampleModal"
@@ -174,6 +180,8 @@ const handleKeyPress = (e) => {
           </div>
         </div>
       </nav>
+
+        {/* <!-- Show list of contacts --> */}
       {store.agendas.length === 0 ? (
         <p>No hay contactos en la agenda.</p>
       ) :(

@@ -2,12 +2,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			contacts:[],
-			agenda:"NOT_FOUND",
+			agenda:"No Agenda Founded",
 			agendas:[],
 			contactEdit:[],
 			// contact:null
-			
-
 		},
 		actions: {
 			addContact: async(newContact) => {
@@ -108,12 +106,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				await fetch(url, options)
 				.then(res => res.json()) 
-				.then(response => {
-				  console.log('Success: ', JSON.stringify(response));
-				  
+				.then(data => {
+				  console.log('Success: ', JSON.stringify(data));
 				})
 				.catch(error => console.log('Error: ', error));
-				  
 			},
 			deleteContact:async(id)=>{		
 				console.log(id)
@@ -124,24 +120,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'Content-Type': 'application/json'
 				  }
 				};
-				try {
-					let response = await fetch(url, options)
-					if (!response.ok) {
-						throw new Error("Error");
-					  }
-					else{
-					let res = await response.json()
-					return res[0]
-					}
-				} catch (error) {
-					console.error('Error '+error)
-				}
-			
+				await fetch(url, options)
+				.then(res => res.json()) 
+				.then(response => {
+				  console.log('Success: ', JSON.stringify(response));
 				  
+				})
+				.catch(error => console.log('Error: ', error));
 			}
-
-			  
-			
 		}
 	};
 };

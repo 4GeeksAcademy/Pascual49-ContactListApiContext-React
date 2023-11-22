@@ -7,14 +7,14 @@ import ProfilePic from "../../img/rigo-baby.jpg";
 export const ContactInfo = () => {
   const { store, actions } = useContext(Context);
 const params = useParams()
-  const[contact, setContact]=useState(null)
+  const[contact, setContact]=useState("")
+  const[phone, setPhone] =useState()
 
   useEffect(()=>{
       setContact(actions.getContact(params.id))
   },[])
 
-  // console.log(params.id)
-
+  console.log(contact)
 
   return (
     <>
@@ -33,7 +33,7 @@ const params = useParams()
           <div className="col">
             <h5>Name: {params.id}</h5>
             <p>Address: {params.id}</p>
-            <p>Phone: {params.phone}</p>
+            <p>Phone: {params.id}</p>
             <p>Email: {params.email}</p>
           </div>
 
