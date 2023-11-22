@@ -17,7 +17,8 @@ export const ContactList = () => {
   useEffect(() => {
     actions.getContacts();
     actions.getAllAgendas();    
-    
+    //console.log(store.agendas);
+
   }, [agenda, contact]);
 
   const handleInputChange = (e) => {
@@ -94,9 +95,24 @@ const handleKeyPress = (e) => {
             data-bs-target="#exampleModal"
             onClick={actions.getAllAgendas}
           >
+            Agenda Disponibles: {store.agendas.map((index) => (
+              <li 
+                className="list-group"
+                >
+                {`${index}`}   
+              </li>
+            ))}
+            {store.agenda}
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onClick={actions.getAllAgendas}
+          >
             Agenda seleccionada: {store.agenda}
           </button>
-
           {/* <!-- Modal --> */}
           <div
             className="modal fade"
