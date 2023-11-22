@@ -145,7 +145,7 @@ const handleKeyPress = (e) => {
                       />
                       <label
                         className="form-check-label"
-                        for={`exampleRadios${index}`}
+                        htmlFor={`exampleRadios${index}`}
                       >
                         {el}
                       </label>

@@ -8,10 +8,13 @@ export const ContactInfo = () => {
   const { store, actions } = useContext(Context);
   const [agenda, setAgenda] = useState("");
 
+  useEffect(() => {
+    actions.getContact();
+    //console.log(store.agendas);
 
+  }, [agenda, contact]);
 
   return (
-    <>
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="border border-dark rounded p-4">
         <div className="row d-flex align-items-center">
@@ -26,14 +29,10 @@ export const ContactInfo = () => {
           </div>
 
             <h5>Nombre: {contact} </h5>
-            <p>Dirección: {contact}</p>
-            <p>Teléfono: {contact}</p>
-            <p>Correo electrónico: {contact}</p>
+            
           </div>
 
         </div>
       </div>
-    </div>
-    </>
   );
 };
