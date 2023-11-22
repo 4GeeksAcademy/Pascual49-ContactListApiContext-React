@@ -6,15 +6,18 @@ import ProfilePic from "../../img/rigo-baby.jpg";
 
 export const ContactInfo = () => {
   const { store, actions } = useContext(Context);
-  const [agenda, setAgenda] = useState("");
+const params = useParams()
+  const[contact, setContact]=useState(null)
 
-  useEffect(() => {
-    actions.getContact();
-    //console.log(store.agendas);
+  useEffect(()=>{
+      setContact(actions.getContact(params.id))
+  },[])
 
-  }, [agenda, contact]);
+  // console.log(params.id)
+
 
   return (
+    <>
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="border border-dark rounded p-4">
         <div className="row d-flex align-items-center">
@@ -27,12 +30,16 @@ export const ContactInfo = () => {
               
             />
           </div>
-
-            <h5>Nombre: {contact} </h5>
-            
+          <div className="col">
+            <h5>Name: {params.id}</h5>
+            <p>Address: {params.id}</p>
+            <p>Phone: {params.phone}</p>
+            <p>Email: {params.email}</p>
           </div>
 
         </div>
       </div>
+    </div>
+    </>
   );
 };

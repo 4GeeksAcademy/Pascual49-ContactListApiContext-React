@@ -46,7 +46,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  })
 				  .then(body => {
 					setStore({ contacts: body });
-					
 				  })
 				  .catch(error => console.log('Error: ', error));
 			  },
@@ -107,19 +106,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					'Content-Type': 'application/json'
 				  }
 				};
-				try {
-					let response = await fetch(url, options)
-					if (!response.ok) {
-						throw new Error("Error");
-					  }
-					else{
-					let res = await response.json()
-					return res[0]
-					}
-				} catch (error) {
-					console.error('Error '+error)
-				}
-			
+				await fetch(url, options)
+				.then(res => res.json()) 
+				.then(response => {
+				  console.log('Success: ', JSON.stringify(response));
+				  
+				})
+				.catch(error => console.log('Error: ', error));
 				  
 			},
 			deleteContact:async(id)=>{		
