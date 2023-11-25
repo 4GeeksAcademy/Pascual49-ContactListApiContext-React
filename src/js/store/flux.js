@@ -112,7 +112,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(error => console.log('Error: ', error));
 			},
 			deleteContact:async(id)=>{		
-				console.log(id)
 				const url = `https://playground.4geeks.com/apis/fake/contact/${id}`;
 				const options = {
 				  method: 'DELETE',
